@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scrolling (disabled for users who prefer reduced motion) */
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+@layer base {
+  body { @apply font-sans text-slate-700 bg-white antialiased; }
+  h1, h2, h3 { @apply font-display text-ink; }
+  :focus-visible { @apply outline outline-2 outline-offset-2 outline-brass; }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition; }
+  .btn-primary { @apply bg-ink text-white hover:bg-[#0b1f1e]; }
+  .btn-brass { @apply bg-brass text-white hover:bg-[#9c7230]; }
+  .btn-wa { @apply bg-[#1fa855] text-white hover:bg-[#188a45]; }
+  .btn-ghost { @apply border border-white/70 text-white hover:bg-white hover:text-ink; }
+  .field { @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm focus:border-ink; }
+  .section { @apply mx-auto max-w-6xl px-5 py-16 md:py-24; }
+}
+
+/* Hero slideshow: crossfade */
+.slide { opacity: 0; transition: opacity 1.4s ease; }
+.slide.is-active { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .slide { transition: none; } }
+
+/* ===== Futuristic hero scene ===== */
+.slide { transform: translateX(100%); transition: transform 1.3s cubic-bezier(.7,0,.2,1); opacity: 1; }
+.slide.is-active { transform: none; animation: kb 10s linear forwards; }
+.slide.is-prev { transform: translateX(-100%); }
+@keyframes kb { from { scale: 1; } to { scale: 1.08; } }
+.beam { position: absolute; inset: 0; background: linear-gradient(100deg, transparent 42%, rgba(34,184,255,.16) 50%, transparent 58%); transform: translateX(-100%); animation: sweep 8s ease-in-out infinite; }
+@keyframes sweep { to { transform: translateX(100%); } }
+.horizon { position: absolute; inset-inline: 0; bottom: 0; height: 30%; background: radial-gradient(ellipse at 50% 100%, rgba(34,184,255,.38), transparent 65%); animation: glow 5s ease-in-out infinite; }
+@keyframes glow { 50% { opacity: .45; } }
+#particles span { position: absolute; width: 3px; height: 3px; border-radius: 9999px; background: #9fdcff; box-shadow: 0 0 8px #22b8ff; opacity: .1; animation: twinkle var(--d) ease-in-out infinite; }
+@keyframes twinkle { 50% { opacity: .9; transform: translateY(-14px); } }
+.drone { position: absolute; left: -8%; width: 34px; height: 7px; border-radius: 9999px; background: #d6eeff; box-shadow: 0 0 14px 4px rgba(34,184,255,.8); animation: fly 30s linear infinite; }
+.drone::after { content: ""; position: absolute; right: -2px; top: 1px; width: 4px; height: 4px; border-radius: 9999px; background: #ff5a6e; animation: blink 1s steps(2) infinite; }
+@keyframes fly { 0% { transform: translate(0,0); } 50% { transform: translate(60vw,-14px); } 100% { transform: translate(120vw,0); } }
+@keyframes blink { 50% { opacity: 0; } }
+.holo { border: 1px solid rgba(127,208,255,.5); background: rgba(10,30,60,.35); backdrop-filter: blur(6px); border-radius: 1rem; box-shadow: 0 0 30px rgba(34,184,255,.25); animation: floaty 6s ease-in-out infinite; }
+@keyframes floaty { 50% { transform: translateY(-10px); } }
+.tg { position: relative; width: 34px; height: 18px; border-radius: 9999px; background: rgba(255,255,255,.25); animation: tgbg 4.8s ease-in-out infinite; }
+.tg::after { content: ""; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 9999px; background: #fff; animation: tgknob 4.8s ease-in-out infinite; animation-delay: inherit; }
+@keyframes tgbg { 0%,30% { background: rgba(255,255,255,.25); } 40%,90% { background: #22b8ff; } }
+@keyframes tgknob { 0%,30% { transform: none; } 40%,90% { transform: translateX(16px); } }
+@media (prefers-reduced-motion: reduce) { .slide, .slide.is-active, .beam, .horizon, .drone, .holo, .tg, .tg::after, #particles span { animation: none; transition: none; } }

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photo gallery | Hotel Exclusive</title>
+  <meta name="description"
+    content="Browse photos of rooms, lobby, amenities and the neighbourhood around Hotel Exclusive.">
+  <link rel="canonical" href="https://www.yourhotel.com/gallery.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Photo gallery | Hotel Exclusive">
+  <meta property="og:description"
+    content="Browse photos of rooms, lobby, amenities and the neighbourhood around Hotel Exclusive.">
+  <meta property="og:image" content="https://www.yourhotel.com/images/og-image.jpg">
+  <meta name="theme-color" content="#12302f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-white focus:p-3">Skip to
+    content</a>
+  <!-- Sticky navigation -->
+  <header id="site-header" class="sticky top-0 z-40 bg-white/95 backdrop-blur transition-shadow">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
+      <a href="index.html" class="font-display text-xl font-semibold text-ink">Hotel Exclusive</a>
+      <nav class="hidden items-center gap-1 md:flex" aria-label="Main"><a href="index.html"
+          class="rounded-full px-3 py-2 text-sm font-medium hover:text-brass text-ink">Home</a><a href="rooms.html"
+          class="rounded-full px-3 py-2 text-sm font-medium hover:text-brass text-ink">Rooms</a><a href="gallery.html"
+          class="rounded-full px-3 py-2 text-sm font-medium hover:text-brass text-brass"
+          aria-current="page">Gallery</a><a href="contact.html"
+          class="rounded-full px-3 py-2 text-sm font-medium hover:text-brass text-ink">Contact</a></nav>
+      <div class="flex items-center gap-2">
+        <a href="rooms.html" class="btn btn-primary hidden !py-2 sm:inline-flex">Book Now</a>
+        <button id="menu-btn" class="rounded-lg p-2 text-ink md:hidden" aria-label="Menu" aria-expanded="false"
+          aria-controls="mobile-menu">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg></button>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="hidden border-t border-slate-100 px-5 pb-4 md:hidden" aria-label="Mobile"><a
+        href="index.html" class="block rounded-lg px-3 py-3 text-ink hover:bg-mist">Home</a><a href="rooms.html"
+        class="block rounded-lg px-3 py-3 text-ink hover:bg-mist">Rooms</a><a href="gallery.html"
+        class="block rounded-lg px-3 py-3 text-ink hover:bg-mist">Gallery</a><a href="contact.html"
+        class="block rounded-lg px-3 py-3 text-ink hover:bg-mist">Contact</a><a href="rooms.html"
+        class="btn btn-primary mt-2 w-full">Book Now</a></nav>
+  </header>
+  <main id="main">
+    <section class="bg-mist">
+      <div class="mx-auto max-w-6xl px-5 py-14">
+        <h1 class="text-4xl md:text-5xl">Gallery</h1>
+        <p class="mt-3">Tap any photo to view it full size.</p>
+      </div>
+    </section>
+    <div class="section">
+      <div class="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter photos"><button data-filter="all"
+          aria-pressed="true"
+          class="rounded-full border border-slate-200 px-4 py-2 text-sm capitalize text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white">all</button><button
+          data-filter="hotel" aria-pressed="false"
+          class="rounded-full border border-slate-200 px-4 py-2 text-sm capitalize text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white">hotel</button><button
+          data-filter="room" aria-pressed="false"
+          class="rounded-full border border-slate-200 px-4 py-2 text-sm capitalize text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white">room</button><button
+          data-filter="surroundings" aria-pressed="false"
+          class="rounded-full border border-slate-200 px-4 py-2 text-sm capitalize text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white">surroundings</button>
+      </div>
+      <div class="columns-2 gap-3 md:columns-3 lg:columns-4"><button data-gallery-item data-cat="hotel"
+          data-full="images/gallery-1.jpg" data-caption="Lobby and reception"
+          class="mb-3 block w-full break-inside-avoid overflow-hidden rounded-2xl"
+          aria-label="Open photo: Lobby and reception"><img src="images/gallery-1-t.jpg" alt="Lobby and reception"
+            width="640" height="1000" class="w-full transition duration-500 hover:scale-105" loading="lazy"
+            decoding="async"></button><button data-gallery-item data-cat="room" data-full="images/gallery-2.jpg"
+          data-caption="Deluxe Queen bedroom" class="mb-3 block w-full break-inside-avoid overflow-hidden rounded-2xl"
+          aria-label="Open photo: Deluxe Queen bedroom"><img src="images/gallery-2-t.jpg" alt="Deluxe Queen bedroom"
+            width="640" height="700" class="w-full transition duration-500 hover:scale-105" loading="lazy"
+            decoding="async"></button><button data-gallery-item data-cat="hotel" data-full="images/gallery-3.jpg"
+          data-caption="Staircase and corridor" class="mb-3 block w-full break-inside-avoid overflow-hidden rounded-2xl"
+          aria-label="Open photo: Staircase and corridor"><img src="images/gallery-3-t.jpg" alt="Staircase and corridor"
+            width="640" height="700" class="w-full transition duration-500 hover:scale-105" loading="lazy"
+            decoding="async"></button><button data-gallery-item data-cat="amenities" data-full="images/gallery-4.jpg"
+          data-caption="Breakfast and coffee corner"
+          class="mb-3 block w-full break-inside-avoid overflow-hidden rounded-2xl"
+          aria-label="Open photo: Breakfast and coffee corner"><img src="images/gallery-4-t.jpg"
+            alt="Breakfast and coffee corner" width="640" height="1000"
+            class="w-full transition duration-500 hover:scale-105" loading="lazy" decoding="async"></button><button
+          data-gallery-item data-cat="room" data-full="images/gallery-5.jpg" data-caption="Bathroom"
+          class="mb-3 block w-full break-inside-avoid overflow-hidden rounded-2xl"
+          aria-label="Open photo: Bathroom"><img src="images/gallery-5-t.jpg" alt="Bathroom" width="640" height="700"
+            class="w-full transition duration-500 hover:scale-105" loading="lazy" decoding="async"></button><button
+          data-gallery-item data-cat="surroundings" data-full="images/gallery-6.jpg"
+          data-caption="Street outside the hotel"
+          class="mb-3 block w-full break-inside-avoid overflow-hidden rounded-2xl"
+          aria-label="Open photo: Street outside the hotel"><img src="images/gallery-6-t.jpg"
+            alt="Street outside the hotel" width="640" height="700"
+            class="w-full transition duration-500 hover:scale-105" loading="lazy" decoding="async"></button><button
+          data-gallery-item data-cat="hotel" data-full="images/gallery-7.jpg" data-caption="Lounge seating"
+          class="mb-3 block w-full break-inside-avoid overflow-hidden rounded-2xl"
+          aria-label="Open photo: Lounge seating"><img src="images/gallery-7-t.jpg" alt="Lounge seating" width="640"
+            height="1000" class="w-full transition duration-500 hover:scale-105" loading="lazy"
+            decoding="async"></button><button data-gallery-item data-cat="room" data-full="images/gallery-8.jpg"
+          data-caption="Executive Suite" class="mb-3 block w-full break-inside-avoid overflow-hidden rounded-2xl"
+          aria-label="Open photo: Executive Suite"><img src="images/gallery-8-t.jpg" alt="Executive Suite" width="640"
+            height="700" class="w-full transition duration-500 hover:scale-105" loading="lazy"
+            decoding="async"></button><button data-gallery-item data-cat="amenities" data-full="images/gallery-9.jpg"
+          data-caption="Laundry corner" class="mb-3 block w-full break-inside-avoid overflow-hidden rounded-2xl"
+          aria-label="Open photo: Laundry corner"><img src="images/gallery-9-t.jpg" alt="Laundry corner" width="640"
+            height="700" class="w-full transition duration-500 hover:scale-105" loading="lazy"
+            decoding="async"></button><button data-gallery-item data-cat="hotel" data-full="images/gallery-10.jpg"
+          data-caption="Entrance" class="mb-3 block w-full break-inside-avoid overflow-hidden rounded-2xl"
+          aria-label="Open photo: Entrance"><img src="images/gallery-10-t.jpg" alt="Entrance" width="640" height="1000"
+            class="w-full transition duration-500 hover:scale-105" loading="lazy" decoding="async"></button><button
+          data-gallery-item data-cat="room" data-full="images/gallery-11.jpg" data-caption="Standard Double"
+          class="mb-3 block w-full break-inside-avoid overflow-hidden rounded-2xl"
+          aria-label="Open photo: Standard Double"><img src="images/gallery-11-t.jpg" alt="Standard Double" width="640"
+            height="700" class="w-full transition duration-500 hover:scale-105" loading="lazy"
+            decoding="async"></button><button data-gallery-item data-cat="surroundings"
+          data-full="images/gallery-12.jpg" data-caption="Nearby market"
+          class="mb-3 block w-full break-inside-avoid overflow-hidden rounded-2xl"
+          aria-label="Open photo: Nearby market"><img src="images/gallery-12-t.jpg" alt="Nearby market" width="640"
+            height="700" class="w-full transition duration-500 hover:scale-105" loading="lazy"
+            decoding="async"></button></div>
+    </div>
+    <dialog id="lightbox"
+      class="m-auto w-[min(95vw,1100px)] rounded-2xl bg-black/95 p-3 text-white backdrop:bg-black/80"
+      aria-label="Photo viewer">
+      <img src="" alt="" class="max-h-[78vh] w-full rounded-xl object-contain">
+      <p class="mt-3 text-center text-sm"></p>
+      <div class="mt-3 flex justify-between"><button data-prev class="btn btn-ghost !py-2"
+          aria-label="Previous photo">Prev</button><button data-close class="btn btn-ghost !py-2">Close</button><button
+          data-next class="btn btn-ghost !py-2" aria-label="Next photo">Next</button></div>
+    </dialog>
+  </main>
+  <!-- Floating WhatsApp button -->
+  <a href="https://wa.me/919999999999?text=Hello%20Hotel%20Exclusive%2C%20I%27d%20like%20to%20book%20a%20room."
+    target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
+    class="btn-wa fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition hover:scale-105"><svg
+      class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path
+        d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.4.1.2.1.8-.1 1.3z" />
+    </svg></a>
+  <footer class="bg-ink text-white/80">
+    <div class="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-4">
+      <div class="md:col-span-2">
+        <p class="font-display text-2xl text-white">Hotel Exclusive</p>
+        <p class="mt-3 max-w-sm text-sm">Quiet rooms, warm service, a short walk from everything.</p>
+      </div>
+      <div>
+        <p class="font-display text-lg text-white">Explore</p>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a class="hover:text-white" href="index.html">Home</a></li>
+          <li><a class="hover:text-white" href="rooms.html">Rooms</a></li>
+
+          <li><a class="hover:text-white" href="gallery.html">Gallery</a></li>
+          <li><a class="hover:text-white" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-display text-lg text-white">Reach us</p>
+        <address class="mt-3 space-y-2 text-sm not-italic">
+          <p>Your Street Address, City, Country</p>
+          <p><a class="hover:text-white" href="tel:+919999999999">+91 99999 99999</a></p>
+          <p><a class="hover:text-white" href="mailto:info@yourhotel.com">info@yourhotel.com</a></p>
+          <p><a class="hover:text-white"
+              href="https://wa.me/919999999999?text=Hello%20Hotel%20Exclusive%2C%20I%27d%20like%20to%20book%20a%20room."
+              target="_blank" rel="noopener">WhatsApp us</a></p>
+        </address>
+      </div>
+    </div>
+    <p class="border-t border-white/10 py-5 text-center text-xs">© <span data-year>2026</span> Hotel Exclusive. All
+      rights reserved.</p>
+  </footer>
+  <script src="js/main.js" defer></script>
+</body>
+
+</html>
