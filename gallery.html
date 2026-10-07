@@ -61,16 +61,50 @@
       </div>
     </section>
     <div class="section">
-      <div class="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter photos"><button data-filter="all"
-          aria-pressed="true"
-          class="rounded-full border border-slate-200 px-4 py-2 text-sm capitalize text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white">all</button><button
-          data-filter="hotel" aria-pressed="false"
-          class="rounded-full border border-slate-200 px-4 py-2 text-sm capitalize text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white">hotel</button><button
-          data-filter="room" aria-pressed="false"
-          class="rounded-full border border-slate-200 px-4 py-2 text-sm capitalize text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white">room</button><button
-          data-filter="surroundings" aria-pressed="false"
-          class="rounded-full border border-slate-200 px-4 py-2 text-sm capitalize text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white">surroundings</button>
-      </div>
+      <div class="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter photos">
+
+  <button
+    type="button"
+    data-filter="all"
+    aria-pressed="true"
+    class="rounded-full border border-slate-200 px-4 py-2 text-sm capitalize text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white">
+    All
+  </button>
+
+  <button
+    type="button"
+    data-filter="hotel"
+    aria-pressed="false"
+    class="rounded-full border border-slate-200 px-4 py-2 text-sm capitalize text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white">
+    Hotel
+  </button>
+
+  <button
+    type="button"
+    data-filter="room"
+    aria-pressed="false"
+    class="rounded-full border border-slate-200 px-4 py-2 text-sm capitalize text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white">
+    Room
+  </button>
+
+  <button
+    type="button"
+    data-filter="amenities"
+    aria-pressed="false"
+    class="rounded-full border border-slate-200 px-4 py-2 text-sm capitalize text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white">
+    Amenities
+  </button>
+
+  <button
+    type="button"
+    data-filter="surroundings"
+    aria-pressed="false"
+    class="rounded-full border border-slate-200 px-4 py-2 text-sm capitalize text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white">
+    Surroundings
+  </button>
+
+</div>
+
       <div class="columns-2 gap-3 md:columns-3 lg:columns-4"><button data-gallery-item data-cat="hotel"
           data-full="images/gallery-1.jpg" data-caption="Lobby and reception"
           class="mb-3 block w-full break-inside-avoid overflow-hidden rounded-2xl"

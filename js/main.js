@@ -86,58 +86,155 @@ document.querySelectorAll("form[data-enquiry]").forEach((form) => {
   }
 });
 
-/* 4. Gallery: category filter + lightbox */
-const items = [...document.querySelectorAll("[data-gallery-item]")];
-const lb = document.getElementById("lightbox");
-if (items.length && lb) {
-  const img = lb.querySelector("img"), cap = lb.querySelector("p");
-  let cur = 0, visible = items;
-  const show = (n) => {
-    cur = (n + visible.length) % visible.length;
-    img.src = visible[cur].dataset.full;
-    img.alt = visible[cur].dataset.caption;
-    cap.textContent = `${visible[cur].dataset.caption} (${cur + 1}/${visible.length})`;
-  };
-  items.forEach((el) => el.addEventListener("click", () => { visible = items.filter((x) => !x.hidden); show(visible.indexOf(el)); lb.showModal(); }));
-  lb.querySelector("[data-prev]").onclick = () => show(cur - 1);
-  lb.querySelector("[data-next]").onclick = () => show(cur + 1);
-  lb.querySelector("[data-close]").onclick = () => lb.close();
-  lb.addEventListener("click", (e) => { if (e.target === lb) lb.close(); }); // click backdrop
-  lb.addEventListener("keydown", (e) => { if (e.key === "ArrowLeft") show(cur - 1); if (e.key === "ArrowRight") show(cur + 1); });
-  document.querySelectorAll("[data-filter]").forEach((b) => b.addEventListener("click", () => {
-    document.querySelectorAll("[data-filter]").forEach((x) => x.setAttribute("aria-pressed", x === b));
-    items.forEach((it) => (it.hidden = b.dataset.filter !== "all" && it.dataset.cat !== b.dataset.filter));
-  }));
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-/* 5. Footer year */
-document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
+  const items = document.querySelectorAll("[data-gallery-item]");
+  const filters = document.querySelectorAll("[data-filter]");
+  const lightbox = document.getElementById("lightbox");
 
-/* 6. Quick booking: live stay pass (room, dates, nights, total) */
-const qb = document.querySelector(".qb");
-if (qb) {
-  const o = (k) => qb.querySelector(`[data-o="${k}"]`);
-  const money = (n) => "₹" + n.toLocaleString("en-IN");   // change ₹ for another currency
-  const fmt = (d) => new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "short" });
-  let guests = 2;
-  const update = () => {
-    const r = qb.querySelector('input[name="room"]:checked');
-    const a = qb.elements.checkin.value, b = qb.elements.checkout.value;
-    const nights = a && b ? Math.max(0, Math.round((new Date(b) - new Date(a)) / 864e5)) : 0;
-    const total = r && nights ? nights * Number(r.dataset.price) : 0;
-    o("room").textContent = r ? r.value : "Not chosen yet";
-    o("dates").textContent = nights ? `${fmt(a)} to ${fmt(b)}` : "Pick your dates";
-    o("nights").textContent = nights;
-    o("guests").textContent = qb.elements.guests.value = `${guests} guest${guests > 1 ? "s" : ""}`;
-    const t = o("total"), prev = t.textContent;
-    t.textContent = money(total);
-    if (prev !== t.textContent) { t.classList.add("is-bump"); setTimeout(() => t.classList.remove("is-bump"), 250); }
-    qb.elements.message.value = total ? `Estimated total: ${money(total)} for ${nights} night${nights > 1 ? "s" : ""}` : "";
-  };
-  qb.addEventListener("input", update);
-  qb.addEventListener("change", update);
-  qb.querySelectorAll("[data-step]").forEach((btn) => btn.addEventListener("click", () => {
-    guests = Math.min(6, Math.max(1, guests + Number(btn.dataset.step)));
-    update();
-  }));
-}
+  /* =========================
+     GALLERY FILTER
+     ========================= */
+
+  filters.forEach((button) => {
+
+    button.addEventListener("click", function () {
+
+      const selectedCategory = this.getAttribute("data-filter");
+
+      /* Active button */
+      filters.forEach((btn) => {
+        btn.setAttribute("aria-pressed", "false");
+      });
+
+      this.setAttribute("aria-pressed", "true");
+
+      /* Show / hide photos */
+      items.forEach((item) => {
+
+        const itemCategory = item.getAttribute("data-cat");
+
+        if (
+          selectedCategory === "all" ||
+          itemCategory === selectedCategory
+        ) {
+          item.hidden = false;
+          item.style.display = "";
+        } else {
+          item.hidden = true;
+          item.style.display = "none";
+        }
+
+      });
+
+    });
+
+  });
+
+
+  /* =========================
+     LIGHTBOX
+     ========================= */
+
+  if (!lightbox || !items.length) return;
+
+  const lightboxImage = lightbox.querySelector("img");
+  const caption = lightbox.querySelector("p");
+  const previousButton = lightbox.querySelector("[data-prev]");
+  const nextButton = lightbox.querySelector("[data-next]");
+  const closeButton = lightbox.querySelector("[data-close]");
+
+  let visibleItems = [];
+  let currentIndex = 0;
+
+
+  function updateVisibleItems() {
+    visibleItems = [...items].filter((item) => {
+      return !item.hidden;
+    });
+  }
+
+
+  function showImage(index) {
+
+    updateVisibleItems();
+
+    if (!visibleItems.length) return;
+
+    currentIndex =
+      (index + visibleItems.length) % visibleItems.length;
+
+    const item = visibleItems[currentIndex];
+
+    lightboxImage.src = item.getAttribute("data-full");
+    lightboxImage.alt = item.getAttribute("data-caption") || "";
+
+    caption.textContent =
+      `${item.getAttribute("data-caption") || ""} (${currentIndex + 1}/${visibleItems.length})`;
+  }
+
+
+  /* Open lightbox */
+  items.forEach((item) => {
+
+    item.addEventListener("click", () => {
+
+      updateVisibleItems();
+
+      currentIndex = visibleItems.indexOf(item);
+
+      showImage(currentIndex);
+
+      lightbox.showModal();
+
+    });
+
+  });
+
+
+  /* Previous */
+  previousButton.addEventListener("click", () => {
+    showImage(currentIndex - 1);
+  });
+
+
+  /* Next */
+  nextButton.addEventListener("click", () => {
+    showImage(currentIndex + 1);
+  });
+
+
+  /* Close */
+  closeButton.addEventListener("click", () => {
+    lightbox.close();
+  });
+
+
+  /* Close by clicking outside */
+  lightbox.addEventListener("click", (event) => {
+
+    if (event.target === lightbox) {
+      lightbox.close();
+    }
+
+  });
+
+
+  /* Keyboard */
+  lightbox.addEventListener("keydown", (event) => {
+
+    if (event.key === "ArrowLeft") {
+      showImage(currentIndex - 1);
+    }
+
+    if (event.key === "ArrowRight") {
+      showImage(currentIndex + 1);
+    }
+
+    if (event.key === "Escape") {
+      lightbox.close();
+    }
+
+  });
+
+});
